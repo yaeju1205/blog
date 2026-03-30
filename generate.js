@@ -52,7 +52,7 @@ for (let i=0; i < contents_directory.length; i++) {
         const post_name = content_directory[j];
         post_build_source = post_build_source + `
 <h2>
-    <a href="${content_name}/${post_name}.html">${post_name}</a>
+    <a href="${post_name}.html">${post_name}</a>
 </h2>
 `;
         fs.writeFileSync(
