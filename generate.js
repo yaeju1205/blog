@@ -70,7 +70,7 @@ for (let i=0; i < contents_directory.length; i++) {
 </h1>
 `;
     fs.writeFileSync(
-        `${template_path}.html`,
+        `${template_path}/index.html`,
         create_source(
             `${title_prefix} -> ${content_name}`,
             post_build_source
