@@ -22,6 +22,8 @@ function create_source(title, source) {
             font-size: 18px;
             line-height: 1.6;
             padding: 16px;
+            white-space: pre-wrap;
+            overflow-wrap: break-word;
         }
     </style>
     <title>${title}</title>
