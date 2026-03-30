@@ -64,7 +64,7 @@ for (let i=0; i < contents_directory.length; i++) {
     
     build_source = build_source + `
 <h1>
-    <a href="posts/${content_name}.html">${content_name}</a>
+    <a href="templates/${content_name}.html">${content_name}</a>
 </h1>
 `;
     fs.writeFileSync(
