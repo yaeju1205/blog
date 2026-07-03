@@ -3,8 +3,6 @@ const path = require("path")
 
 const main_title = "yaeju's blog"
 
-const repository_url = "yaeju1205.github.io/blog"
-
 const content_files_path = path.join("contents")
 const content_files = fs.readdirSync(content_files_path)
 
@@ -55,10 +53,11 @@ fs.writeFileSync(
         <title>${main_title}</title>
     </head>
     <body>
-    ${content_files.map(
+${content_files.map(
         (content_file) =>
             `<a href = "${content_file}.html"> ${content_file}</a>`
-    ).join("<br>\n")}
+    ).sort().join("<br>\n")
+    }
     </body>
     `,
     "utf8"
