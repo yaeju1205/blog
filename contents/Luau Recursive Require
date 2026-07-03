@@ -1,0 +1,37 @@
+luau 라는 언어는 어떠한 모듈을 가져올때 `require` 를 사용합니다
+그리고 타입적으로는 재귀적 require 이 불가능합니다 하지만
+
+luau 의 기본적인 동작은
+[source] -> [bytecode] -> [load bytecode into vm] -> [optional native code generate] -> [resume thread]
+이러한 방식으로 진행됩니다
+즉 타입에 대하여 에러를 내지 않습니다
+
+예를들어 `example.luau` 에서
+```luau
+local a: number = true
+```
+이러한 구문이 있다고 해도 런타임에서는 오류가 나지 않습니다
+
+`a.luau` 에서
+```luau
+require("./b.luau")
+```
+b 를 require 하고
+
+`b.luau` 에서
+```luau
+require("./a.luau")
+``` 
+a 를 require 하면 재귀적으로 require 하게 됩니다
+
+이때는 타입오류가 납니다
+`TypeError: Cyclic module dependency` 이러한 문구가 나타나지만
+앞서 말했듯이 luau 는 런타임에 타입을 반영하지 않습니다
+
+그러하므로 실행은 하지만 작동하지는 않습니다
+그래서 luau 의 런타임들은 각자 다른 반응을 내보냅니다
+lune 은 그대로 프로세스가 멈춰버리고
+luau 와 lute 는 스텍오버플로우가 나며
+zune 은 만약 무언가 로딩을 완료하지 않았지만 반환도 하지 않았다면 재귀적인 require 임을 확인하고 문제가 발생했음을 알립니다
+
+그리고 공식 luau 의 require 구현은 모듈이 필요하게 된 후에 모듈을 등록한다는 점도 알고있다면 좋습니다
