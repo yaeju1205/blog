@@ -49,10 +49,17 @@ for (const content_file of content_files) {
 
 fs.writeFileSync(
     "index.html",
-    content_files.map(
+    `
+    <head>
+        <meta charset="UTF-8">
+        <title>${main_title}</title>
+    </head>
+    <body>
+    ${content_files.map(
         (content_file) =>
-            `<a href="${content_file}.html">${content_file}</a>`
-    )
-        .join("<br>\n"),
+            `< a href = "${content_file}.html" > ${content_file}</a >`
+    ).join("<br>\n")}
+    </body>
+    `,
     "utf8"
 )
