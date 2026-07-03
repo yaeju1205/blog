@@ -57,7 +57,7 @@ fs.writeFileSync(
     <body>
     ${content_files.map(
         (content_file) =>
-            `< a href = "${content_file}.html" > ${content_file}</a >`
+            `<a href = "${content_file}.html"> ${content_file}</a>`
     ).join("<br>\n")}
     </body>
     `,
