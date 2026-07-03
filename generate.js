@@ -8,7 +8,7 @@ const repository_url = "yaeju1205.github.io/blog"
 const content_files_path = path.join("contents")
 const content_files = fs.readdirSync(content_files_path)
 
-function create_template_source(title, content_path) {
+function create_template_source(title, content_file) {
     return `
     <head>
         <meta charset="UTF-8">
@@ -30,7 +30,7 @@ function create_template_source(title, content_path) {
         </pre>
 
         <script type="module">
-            const res = await fetch("${repository_url}" + "contents/" + "${content_path}")
+            const res = await fetch("${repository_url}" + "contents/" + "${content_file}")
             const text = await res.text()
 
             document.querySelector("pre").textContent = text
@@ -42,7 +42,7 @@ function create_template_source(title, content_path) {
 for (const content_file of content_files) {
     fs.writeFileSync(
         path.join(content_file + ".html"),
-        create_template_source(`${main_title} -> ${content_file}`),
+        create_template_source(`${main_title} -> ${content_file}`, content_file),
         "utf8"
     )
 }
