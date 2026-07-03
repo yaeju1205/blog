@@ -30,7 +30,7 @@ function create_template_source(title, content_path) {
         </pre>
 
         <script type="module">
-            const res = await fetch(${repository_url} + "/" + ${content_path})
+            const res = await fetch("${repository_url}" + "/" + "${content_path}")
             const text = await res.text()
 
             document.querySelector("pre").textContent = text
