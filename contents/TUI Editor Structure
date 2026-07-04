@@ -16,7 +16,7 @@ editor external layer
 예를들어 커서의 위치, 버퍼 등이 있겟습니다
 
 'external layer' 는 server 에서 관리하는 레이어입니다
-예를들어 저장된 파일의 내용, lsp 등이 있겟습니다
+예를들어 저장된 파일의 내용, LSP 등이 있겟습니다
 
 왜 두가지 레이어로 나누어져 있냐하면 'inner layer' 는 클라이언트가 관리하기에 'external layer' 에게 데이터를 주거나 받는 행동을 하지 않아도 됩니다
 또한 'inner layer' 는 클라이언트의 인풋에 바로 반응합니다
@@ -27,9 +27,9 @@ editor external layer
 
 그럼 여기서 생각해볼것이 있습니다
 
-lsp 를 어떻게 사용할것인가
-lsp 는 대표적으로 자동완성, 상태진단을 지원합니다
-이런 lsp 의 정보를 가져오기 위하여
+LSP 를 어떻게 사용할것인가
+LSP 는 대표적으로 자동완성, 상태진단을 지원합니다
+이런 LSP 의 정보를 가져오기 위하여
 
 language server protocol -> external layer -> inner layer
 
